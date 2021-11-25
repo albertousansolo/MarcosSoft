@@ -36,17 +36,19 @@ namespace MarcosSoftWeb
 
             try
             {
-                var listaLimites = new List<Rango>();
-                listaLimites.Add(new Rango(0, 20));
-                listaLimites.Add(new Rango(61, 30));
-                listaLimites.Add(new Rango(71, 40));
-                listaLimites.Add(new Rango(81, 50));
-                listaLimites.Add(new Rango(85, 60));
-                listaLimites.Add(new Rango(90, 70));
-                listaLimites.Add(new Rango(94, 80));
-                listaLimites.Add(new Rango(100, 100));
-                listaLimites.Add(new Rango(103, 120));
-                listaLimites.Add(new Rango(106, 140));
+                var listaLimites = new List<Rango>
+                {
+                    new Rango(0, 20),
+                    new Rango(61, 30),
+                    new Rango(71, 40),
+                    new Rango(81, 50),
+                    new Rango(85, 60),
+                    new Rango(90, 70),
+                    new Rango(94, 80),
+                    new Rango(100, 100),
+                    new Rango(103, 120),
+                    new Rango(106, 140)
+                };
 
 
 
