@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcosSoft", "OldExe\Marcos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcosWeb", "MarcosWeb\MarcosWeb.csproj", "{298DD0C4-12FC-4B1D-BB64-50FD28EA0FCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcosWebAssembly", "MarcosWebAssembly\MarcosWebAssembly.csproj", "{0EDC6A17-4E03-4A96-935D-AE8A81588DA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{298DD0C4-12FC-4B1D-BB64-50FD28EA0FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{298DD0C4-12FC-4B1D-BB64-50FD28EA0FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{298DD0C4-12FC-4B1D-BB64-50FD28EA0FCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EDC6A17-4E03-4A96-935D-AE8A81588DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EDC6A17-4E03-4A96-935D-AE8A81588DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EDC6A17-4E03-4A96-935D-AE8A81588DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EDC6A17-4E03-4A96-935D-AE8A81588DA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
