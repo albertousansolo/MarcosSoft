@@ -1,0 +1,35 @@
+﻿@page "/Calculador"
+
+
+<h1>Calculadores</h1>
+
+<p>Cálculo del número de TSS</p>
+
+
+    FTHR (Pulsaciones medias test ftp*0.95)
+    <RadzenTextBox Value=@Model.FTHR />
+    Media pulsaciones en la actividad
+    <RadzenTextBox Value=@Model.PulsacionesMedias />
+    Minutos en la actividad
+    <RadzenTextBox Value=@Model.Minutos ></RadzenTextBox>
+
+    <RadzenButton Click=@Check>Calcular</RadzenButton>
+
+    
+
+@if (!string.IsNullOrEmpty(Model.Result))
+{
+    <p><em>@Model.Result</em></p>
+}
+
+@code {
+
+    
+    TssCalculator.TssModel Model = new TssCalculator.TssModel();
+
+    public void Check()
+    {
+        var calculator = new TssCalculator();
+        calculator.GetCalculation(Model);
+    }
+}
