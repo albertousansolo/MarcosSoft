@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Index.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\zonasPw.JPG" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.9" PrivateAssets="all" />
     <PackageReference Include="Radzen.Blazor" Version="3.13.2" />
@@ -13,6 +21,19 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MarcosCore\MarcosCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pages\zonasPw.JPG" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Index.razor">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\PowerZones.JPG">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
