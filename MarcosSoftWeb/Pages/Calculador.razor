@@ -4,11 +4,11 @@
 <h1>Calculadores</h1>
 <RadzenFieldset Text="Cálculo del número de TSS">
 	FTHR (Pulsaciones medias test ftp*0.95)
-	<RadzenTextBox Value=@Model.FTHR />
+	<RadzenTextBox @bind-Value=@Model.FTHR />
 	Media pulsaciones en la actividad
-	<RadzenTextBox Value=@Model.PulsacionesMedias />
+	<RadzenTextBox @bind-Value=@Model.PulsacionesMedias />
 	Minutos en la actividad
-	<RadzenTextBox Value=@Model.Minutos></RadzenTextBox>
+	<RadzenTextBox @bind-Value=@Model.Minutos></RadzenTextBox>
 	<RadzenButton Click=@Check>Calcular</RadzenButton>
 	@if (!string.IsNullOrEmpty(Model.Result))
 	{
@@ -18,9 +18,9 @@
 
 <RadzenFieldset Text="Cálculo de Zonas">
  Último FTP Neto en Watios
- <RadzenNumeric Value=@ZoneModel.FTPNetInWatts Min="200" Max="450" />
+ <RadzenNumeric @bind-Value=@ZoneModel.FTPNetInWatts Min="200" Max="450" />
  Pulsaciones Medias en el último FTP
- <RadzenNumeric Value=@ZoneModel.HBAvg Min="100" Max="200" />
+ <RadzenNumeric @bind-Value=@ZoneModel.HBAvg Min="100" Max="200" />
  <RadzenButton Click=@CheckPowerZones>Calcular</RadzenButton>
  <table>
 	 <tr>
