@@ -50,32 +50,34 @@
 
 @code {
 
-	#region Personalizar
+    #region Personalizar
 
-	private List<menuItem> MenuItems = new List<menuItem>()
-	{
-	new menuItem("General","main"){ Icon="home" },
-	new menuItem("Calculador","Calculador"),
-	};
-	#endregion
+    private List<menuItem> MenuItems = new List<menuItem>()
+    {
+    new menuItem("General","main"){ Icon="home" },
+    new menuItem("Calculador","Calculador"),
+    new menuItem("Workouts Active Recovery","AR"),
+    new menuItem("Workouts Aerobic Endurance","AE"),
+    };
+    #endregion
 
 
 
-	#region Menu
+    #region Menu
 
-	public sealed class menuItem
-	{
-		public menuItem(string text, string path)
-		{
-			Text = text;
-			Path = path;
-		}
-		public string Text { get; set; }
-		public string Path { get; set; }
-		public string Icon { get; set; } = "description";
-	}
+    public sealed class menuItem
+    {
+        public menuItem(string text, string path)
+        {
+            Text = text;
+            Path = path;
+        }
+        public string Text { get; set; }
+        public string Path { get; set; }
+        public string Icon { get; set; } = "description";
+    }
 
-	#endregion
+    #endregion
 
 
 }
