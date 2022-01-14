@@ -1,8 +1,6 @@
 ﻿@page "/Calculador"
+<h3>Calculador de TSS</h3>
 
-    <RadzenTabs>
-        <Tabs>
-            <RadzenTabsItem Text="Calculadores">
                 <RadzenFieldset Text="Cálculo del número de TSS">
                     FTHR (Pulsaciones medias test ftp*0.95)
                     <RadzenTextBox @bind-Value=@Model.FTHR />
@@ -17,104 +15,19 @@
                     }
                 </RadzenFieldset>
 
-                <RadzenFieldset Text="Cálculo de Zonas">
-                    Último FTP Neto en Watios
-                    <RadzenNumeric @bind-Value=@ZoneModel.FTPNetInWatts Min="200" Max="450" />
-                    Pulsaciones Medias en el último FTP
-                    <RadzenNumeric @bind-Value=@ZoneModel.HBAvg Min="100" Max="200" />
-                    <RadzenButton Click=@CheckPowerZones>Calcular</RadzenButton>
-                    <table>
-                        <tr>
-                            <td colspan="2">
-                                <p><em>@ZoneModel.Description</em></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <RadzenLabel Text=@ZoneModel.ZoneFatMaxStr></RadzenLabel>
-                            </td>
-                            <td>
-                                <RadzenLabel Text=@ZoneModel.ZoneFHZonaStr></RadzenLabel>
-                            </td>
-                        </tr>
-                        <tr>
-                            @if (ZoneModel.ZoneRangesPower != null)
-                            {
-                                <td>
-                                    <RadzenDataGrid @ref="gridPZones" AllowFiltering="false" AllowPaging="false" Style="width:500px" AllowSorting="false"
-                                                    Data="@ZoneModel.ZoneRangesPower" TItem="ZoneCalculator.ZoneRange">
-                                        <Columns>
-                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Zona Potencia" Property="Description" />
-                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Desde %" Property="FromPer" />
-                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Hasta %" Property="ToPer" />
-                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Desde Watt" Property="From" />
-                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Hasta Watt" Property="To" />
-
-                                        </Columns>
-                                    </RadzenDataGrid>
-                                </td>
-                                <td>
-                                    <RadzenImage Path="PowerZones.JPG"></RadzenImage>
-                                </td>
-                            }
-                        </tr>
-
-                        <tr>
-                            <td colspan="2">
-                                @if (ZoneModel.ZoneRangesHR != null)
-                                {
-
-
-                                    <RadzenDataGrid @ref="gridPZones" AllowFiltering="false" AllowPaging="false" Style="width:500px" AllowSorting="false"
-                                                    Data="@ZoneModel.ZoneRangesHR" TItem="ZoneCalculator.ZoneRange">
-                                        <Columns>
-                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Zona FC" Property="Description" />
-                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Desde %" Property="FromPer" />
-                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Hasta %" Property="ToPer" />
-                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Desde HBM" Property="From" />
-                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Hasta HBM" Property="To" />
-
-                                        </Columns>
-                                    </RadzenDataGrid>
-                                }
-                            </td>
-                        </tr>
-                    </table>
-                </RadzenFieldset>
-            </RadzenTabsItem>
-
-
-            <RadzenTabsItem Text="Tss por semana y por período">
-
-                <RadzenImage Path="annualTSS.JPG" Style="height:600px;width:800px;"></RadzenImage>
-                <RadzenImage Path="weekTss.JPG" Style="height:600px;width:800px;">></RadzenImage>
-            </RadzenTabsItem>
-        </Tabs>
-    </RadzenTabs>
-    
-  
-
-
-
 
 
 
     @code {
-        private RadzenDataGrid<ZoneCalculator.ZoneRange> gridPZones;
-
+       
         TssCalculator.TssModel Model = new TssCalculator.TssModel();
 
-        ZoneCalculator.ZoneCalculatorModel ZoneModel = new ZoneCalculator.ZoneCalculatorModel();
-
+      
         public void Check()
         {
             var calculator = new TssCalculator();
             calculator.GetCalculation(Model);
         }
 
-        public void CheckPowerZones()
-        {
-            var calculator = new ZoneCalculator();
-            calculator.Calculate(ZoneModel);
-        }
+      
     }

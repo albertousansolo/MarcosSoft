@@ -1,0 +1,135 @@
+﻿@page "/ZonesCalculator"
+<h3>Calculador de zonas</h3>
+
+                    Último FTP Neto en Watios
+                    <RadzenNumeric @bind-Value=@ZoneModel.FTPNetInWatts Style="width:100px" Min="200" Max="450" />
+                    Pulsaciones Medias en el último FTP
+                    <RadzenNumeric @bind-Value=@ZoneModel.HBAvg Style="width:100px" Min="100" Max="200" />
+                    Peso en la prueba FTP
+                    <RadzenNumeric @bind-Value=@ZoneModel.Weight Style="width:100px" Min="50" Max="100"/>
+                    <RadzenButton Click=@CheckPowerZones>Calcular</RadzenButton>
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <p><em>@ZoneModel.Description</em></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <RadzenLabel Text=@ZoneModel.ZoneFatMaxStr></RadzenLabel>
+                            </td>
+                            <td>
+                                <RadzenLabel Text=@ZoneModel.ZoneFHZonaStr></RadzenLabel>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            @if (ZoneModel.ZoneRangesPower != null)
+                            {
+                                <td>
+                                    @((MarkupString)ZoneModel.ResumenZonasPower)<br />
+                                    <RadzenDataGrid @ref="gridPZones" AllowFiltering="false" AllowPaging="false" Style="width:500px" AllowSorting="false"
+                                                    Data="@ZoneModel.ZoneRangesPower" TItem="ZoneCalculator.ZoneRange">
+                                        <Columns>
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Zona Potencia" Property="Description" />
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Desde %" Property="FromPer" />
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Hasta %" Property="ToPer" />
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Desde Watt" Property="From" />
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Hasta Watt" Property="To" />
+
+                                        </Columns>
+                                    </RadzenDataGrid>
+                                </td>
+                            }
+                            <td>
+                                @if (ZoneModel.ZoneRangesHR != null)
+                                {
+                                    @((MarkupString)ZoneModel.ResumenZonasHR)<br />
+
+                                    <RadzenDataGrid @ref="gridPZones" AllowFiltering="false" AllowPaging="false" Style="width:500px" AllowSorting="false"
+                                                    Data="@ZoneModel.ZoneRangesHR" TItem="ZoneCalculator.ZoneRange">
+                                        <Columns>
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Zona FC" Property="Description" />
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Desde %" Property="FromPer" />
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Hasta %" Property="ToPer" />
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Desde HBM" Property="From" />
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneRange" Title="Hasta HBM" Property="To" />
+
+                                        </Columns>
+                                    </RadzenDataGrid>
+                                }
+                            </td>
+                             @if (ZoneModel.ZoneWKg != null)
+                            {
+                                <td>
+                                    @((MarkupString)ZoneModel.ResumenZonasKg)<br />
+                                    <RadzenDataGrid @ref="gridPWKg" AllowFiltering="false" AllowPaging="false" Style="width:500px" AllowSorting="false"
+                                                    Data="@ZoneModel.ZoneWKg" TItem="ZoneCalculator.ZoneWKg">
+                                        <Columns>
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneWKg" Title="Peso" Property="Peso">
+                                                <Template Context="data">
+                                                    @if (!data.MyWeight)
+                                                    {
+                                                        <span style='color:black'>@data.Peso</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span style='color:red'>@data.Peso</span>
+                                                    }
+                                                </Template>
+                                            </RadzenDataGridColumn>
+
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneWKg" Title="W/kg" Property="WKg">
+                                                <Template Context="data">
+                                                    @if (!data.MyWeight)
+                                                    {
+                                                        <span style='color:black'>@data.WKg</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span style='color:red'>@data.WKg</span>
+                                                    }
+                                                </Template>
+                                            </RadzenDataGridColumn>
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneWKg" Title="FTP derivado" Property="FTPDerivado">
+                                                <Template Context="data">
+                                                    @if (!data.MyWeight)
+                                                    {
+                                                        <span style='color:black'>@data.FTPDerivado</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span style='color:red'>@data.FTPDerivado</span>
+                                                    }
+                                                </Template>
+                                            </RadzenDataGridColumn>
+                                            <RadzenDataGridColumn Width="100px" TItem="ZoneCalculator.ZoneWKg" Title="W Kg derivado" Property="WKgDerivado">
+                                                <Template Context="data">
+                                                    @if (!data.MyWeight)
+                                                    {
+                                                        <span style='color:black'>@data.WKgDerivado</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span style='color:red'>@data.WKgDerivado</span>
+                                                    }
+                                                </Template>
+                                            </RadzenDataGridColumn>
+                                        </Columns>
+                                    </RadzenDataGrid>
+                                </td>
+                            }
+                        </tr>
+                    </table>
+                
+@code {
+     private RadzenDataGrid<ZoneCalculator.ZoneRange> gridPZones;
+     private RadzenDataGrid<ZoneCalculator.ZoneWKg> gridPWKg;
+       
+        ZoneCalculator.ZoneCalculatorModel ZoneModel = new ZoneCalculator.ZoneCalculatorModel();
+
+        public void CheckPowerZones()
+        {
+            var calculator = new ZoneCalculator();
+            calculator.Calculate(ZoneModel);
+        }
+}
